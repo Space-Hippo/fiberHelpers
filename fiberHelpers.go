@@ -30,8 +30,8 @@ func (c *RouterConfig) DELETE(path string, handler fiber.Handler) fiber.Router {
 
 func RecordNotFound(ctx *fiber.Ctx, err error) error {
 	if err.Error() == "sql: no rows in result set" {
-		return ctx.Status(fiber.StatusNotFound).JSON("Resource not found")
+		return ctx.Status(fiber.StatusNotFound).JSON(ResourceNotFound)
 	} else {
-		return ctx.Status(fiber.StatusInternalServerError).JSON("Internal server error")
+		return ctx.Status(fiber.StatusInternalServerError).JSON(InternalServerError)
 	}
 }
